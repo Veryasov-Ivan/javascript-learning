@@ -1,3 +1,5 @@
+// Day 1
+
 let subscribers = "100";
 
 subscribers = "150";
