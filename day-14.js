@@ -1,3 +1,5 @@
+// Day 14
+
 const blogerName = "Kyaaan"
 const views = 35000;
 const basePrice = 25000;
