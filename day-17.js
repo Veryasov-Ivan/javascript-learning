@@ -23,9 +23,9 @@ const cryptoWallet = {
 
     getInvoice: function(price) {
         if (cryptoWallet.getTotalCryptoValue() >= nftPrice) {
-            return `Сделка одобрена для пользователя ${this.owner}! У вас останется $${cryptoWallet.getTotalCryptoValue()} после покупки.`
+            return `Transaction approved for user ${this.owner}! You will have $${cryptoWallet.getTotalCryptoValue()} remaining after the purchase.`
         } else {
-            return `Отказ! Пользователю ${this.owner} не хватает $${cryptoWallet.getTotalCryptoValue()} для совершения сделки.`
+            return `Transaction declined! User ${this.owner} does not have enough funds. Current portfolio value: $${cryptoWallet.getTotalCryptoValue()}.`
         }
     }
 };
@@ -35,7 +35,7 @@ let transactionStatus = "";
 if (cryptoWallet.coins[0] === "BTC" && cryptoWallet.getTotalCryptoValue() >= 1000000) {
     transactionStatus = `${cryptoWallet.getInvoice(nftPrice)}`
 } else {
-    transactionStatus = `Ваш портфель слишком мал или не содержит BTC на первом месте. Общая стоимость активов: $${cryptoWallet.getTotalCryptoValue()}`
+    transactionStatus = `Your portfolio is too small or does not have BTC as the first asset. Total portfolio value: $${cryptoWallet.getTotalCryptoValue()}`
 };
 
 console.log(transactionStatus);
