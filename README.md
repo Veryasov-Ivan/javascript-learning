@@ -9,5 +9,3 @@ My goal is not just to learn syntax, but to become a developer capable of buildi
 Current focus:
 
 - JavaScript
-- Automation
-- SaaS Development
