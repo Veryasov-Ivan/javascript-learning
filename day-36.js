@@ -12,7 +12,7 @@ let selectedServices = ["Switch Lubrication", "Sound Dampening", "Express Delive
 let servicePriceList = [
     { name: "Switch Lubrication", price: 1500 },
     { name: "Sound Dampening", price: 1000 },
-    { name: "Diode Soldering", price: 2000 }
+    { name: "Express Delivery", price: 2000 }
 ];
 
 function calculateTotal() {
