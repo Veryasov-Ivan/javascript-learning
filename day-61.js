@@ -1,41 +1,30 @@
 // Day 61
-// Fake Download
+// Async Data Processing
 
 let button = document.getElementById("button");
 let status = document.getElementById("status");
-let progress = document.getElementById("progress");
+let result = document.getElementById("result");
 
-async function startDownloading() {
-    button.disabled = true;
-    status.innerText = "Status: Downloading...";
-
+async function getUserData() {
     await new Promise(function(resolve) {
-        setTimeout(resolve, 1000);
+        setTimeout(resolve, 2000);
     });
 
-    progress.innerText = "Progress: 25%";
+    return {
+        name: "Ivan",
+        age: 16,
+        role: "Developer"
+    };
 
-    await new Promise(function(resolve) {
-        setTimeout(resolve, 1000);
-    });
+}
 
-    progress.innerText = "Progress: 50%";
-
-    await new Promise(function(resolve) {
-        setTimeout(resolve, 1000);
-    });
-
-    progress.innerText = "Progress: 75%";
-
-    await new Promise(function(resolve) {
-        setTimeout(resolve, 1000);
-    });
-
-    progress.innerText = "Progress: 100%";
-    status.innerText = "Status: Download complete!";
-    button.disabled = false;
+async function loadData() {
+    status.innerText = "Status: Loading...";
+    let data = await getUserData();
+    status.innerText = "Status: Complete!"
+    result.innerText = `Result: Name: ${data.name}; Age: ${data.age}; Role: ${data.role}.`;
 }
 
 button.addEventListener("click", function() {
-    startDownloading();
+    loadData();
 });
