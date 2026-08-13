@@ -13,16 +13,30 @@ async function searchPokemon() {
     let pokemonName = pokemonInput.value;
     let url = `https://pokeapi.co/api/v2/pokemon/${pokemonName}`;
 
-    status.innerText = "Status: Loading...";
+    if (pokemonName.length === 0) {
+        status.innerText = "Status: Please enter a Pokémon name.";
+    } else {
+        status.innerText = "Status: Loading...";
 
-    let response = await fetch(url);
-    let data = await response.json();
+        try {
+            let response = await fetch(url);
 
-    name.innerText = `Name: ${data.name}`;
-    type.innerText = `Type: ${data.types[0].type.name}`;
-    height.innerText = `Height: ${data.height}`;
-    pokemonImage.src = `${data.sprites.front_default}`;
-    status.innerText = "Status: Complete!";
+            if (response.ok) {
+                let data = await response.json();
+
+                name.innerText = `Name: ${data.name}`;
+                type.innerText = `Type: ${data.types[0].type.name}`;
+                height.innerText = `Height: ${data.height}`;
+                pokemonImage.src = data.sprites.front_default;
+                status.innerText = "Status: Complete!";
+            } else {
+                status.innerText = "Status: Pokémon not found.";
+            }
+
+        } catch (error) {
+            status.innerText = "Status: Failed to load data.";
+        }
+    }
 }
 
 searchButton.addEventListener("click", function() {
